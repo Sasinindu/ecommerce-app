@@ -1,0 +1,15 @@
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+.container {
+  margin-top: 30px;
+}
+
+.card {
+  margin-bottom: 20px;
+}
+
+.custom-navbar {
+  padding-left: 16px;
+}
