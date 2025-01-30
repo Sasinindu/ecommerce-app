@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['user_name'] = $user['name'];  // Store user name in session
 
                 // Redirect to the user dashboard or home page
-                header('Location: ../index.php');  // Or wherever you want to redirect
+                header('Location: ../pages/my_orders.php');  // Or wherever you want to redirect
                 exit();
             } else {
                 // Invalid password

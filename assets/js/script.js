@@ -89,44 +89,74 @@ document.addEventListener("DOMContentLoaded", function () {
   // Update the cart display inside the offcanvas
   function updateCartItems(cart) {
     cartItemsList.innerHTML = ""; // Clear existing items
-  
+
     cart.forEach((item) => {
       const li = document.createElement("li");
-      li.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
-  
+      li.classList.add(
+        "list-group-item",
+        "d-flex",
+        "justify-content-between",
+        "align-items-center"
+      );
+
       // Create left side for the item name and price
       const leftSide = document.createElement("div");
-      leftSide.classList.add("d-flex", "justify-content-start", "align-items-center");
+      leftSide.classList.add(
+        "d-flex",
+        "justify-content-start",
+        "align-items-center"
+      );
       leftSide.innerHTML = `${item.name} - $${item.price} x ${item.quantity}`;
-  
+
       // Create right side for the buttons
       const rightSide = document.createElement("div");
-      rightSide.classList.add("d-flex", "justify-content-end", "align-items-center");
-  
+      rightSide.classList.add(
+        "d-flex",
+        "justify-content-end",
+        "align-items-center"
+      );
+
       // Add the Remove One and Remove buttons to the right side
       const removeOneButton = document.createElement("button");
       removeOneButton.classList.add("btn", "btn-sm", "btn-danger", "me-2");
       removeOneButton.textContent = "-";
       removeOneButton.setAttribute("data-product-id", item.id);
       removeOneButton.classList.add("remove-one");
-  
+
       const removeButton = document.createElement("button");
       removeButton.classList.add("btn", "btn-sm", "btn-danger");
       removeButton.textContent = "x";
       removeButton.setAttribute("data-product-id", item.id);
       removeButton.classList.add("remove");
-  
+
       // Append buttons to the right side
       rightSide.appendChild(removeOneButton);
       rightSide.appendChild(removeButton);
-  
+
       // Append both sides (left and right) to the list item (li)
       li.appendChild(leftSide);
       li.appendChild(rightSide);
-  
+
       // Append the list item to the cart list
       cartItemsList.appendChild(li);
     });
   }
-  
+});
+
+// Display the toast messages if they are set
+document.addEventListener("DOMContentLoaded", function () {
+  const successToast = document.querySelector(".toast.bg-success");
+  const errorToast = document.querySelector(".toast.bg-danger");
+
+  // Show the success toast if it exists
+  if (successToast) {
+    const toast = new bootstrap.Toast(successToast);
+    toast.show();
+  }
+
+  // Show the error toast if it exists
+  if (errorToast) {
+    const toast = new bootstrap.Toast(errorToast);
+    toast.show();
+  }
 });
